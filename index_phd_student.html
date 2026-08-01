@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Asiful Islam Miah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════════
+   TOKENS
+══════════════════════════════════════════════ */
+:root {
+  --bg:         #ffffff;
+  --bg-soft:    #f7f7f5;
+  --bg-warm:    #f2f0ec;
+
+  --ink:        #18181b;
+  --ink-2:      #3f3f46;
+  --ink-3:      #71717a;
+  --ink-4:      #a1a1aa;
+  --ink-5:      #d4d4d8;
+
+  --blue:       #1d4ed8;
+  --blue-lt:    #eff6ff;
+  --blue-mid:   #3b82f6;
+
+  --green:      #15803d;
+  --green-lt:   #f0fdf4;
+  --amber:      #92400e;
+  --amber-lt:   #fffbeb;
+  --slate-lt:   #f8fafc;
+  --slate:      #64748b;
+
+  --border:     #e4e4e7;
+  --border-2:   #f4f4f5;
+
+  --ff-serif: 'Newsreader', Georgia, serif;
+  --ff-sans:  'Geist', system-ui, sans-serif;
+  --ff-mono:  'Geist Mono', monospace;
+
+  --max: 780px;
+  --r: 10px;
+}
+
+/* ══════════════════════════════════════════════
+   BASE
+══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff-sans);
+  background: var(--bg);
+  color: var(--ink-2);
+  line-height: 1.7;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+::selection { background: #dbeafe; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ══════════════════════════════════════════════
+   NAV — ultra-minimal, fixed
+══════════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+.nav.solid { border-bottom-color: var(--border); }
+
+.nav-inner {
+  width: 100%;
+  max-width: calc(var(--max) + 4rem);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-name {
+  font-family: var(--ff-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.15rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--ink-3);
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-links a:hover { background: var(--bg-soft); color: var(--ink); text-decoration: none; }
+.nav-links a.on { color: var(--ink); font-weight: 500; }
+
+/* ══════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════ */
+.hero {
+  padding: 7rem 2rem 3.5rem;
+  max-width: calc(var(--max) + 4rem);
+  margin: 0 auto;
+}
+
+.hero-inner {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+/* Photo */
+.hero-photo {
+  flex-shrink: 0;
+  width: 160px;
+}
+.photo-frame {
+  width: 160px;
+  height: 195px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #dbeafe 0%, #e0e7ff 50%, #f0fdf4 100%);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-serif);
+  font-size: 3rem;
+  font-weight: 300;
+  color: #93c5fd;
+  letter-spacing: -0.03em;
+  position: relative;
+}
+.photo-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-body { flex: 1; padding-top: 0.25rem; }
+
+.hero-name {
+  font-family: var(--ff-serif);
+  font-size: 2.1rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 0.55rem;
+}
+
+.hero-role {
+  font-size: 0.9rem;
+  color: var(--ink-3);
+  line-height: 1.65;
+  margin-bottom: 0.15rem;
+}
+.hero-role strong { color: var(--ink-2); font-weight: 500; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.9rem 0 1.1rem;
+  padding: 0.3rem 0.8rem;
+  background: var(--blue-lt);
+  border: 1px solid #bfdbfe;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--blue);
+  letter-spacing: 0.01em;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34,197,94,0.2);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(34,197,94,0.2); }
+  50%       { box-shadow: 0 0 0 4px rgba(34,197,94,0.1); }
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  padding: 0.32rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.hero-link:hover {
+  border-color: var(--blue-mid);
+  color: var(--blue);
+  background: var(--blue-lt);
+  text-decoration: none;
+}
+.hero-link-icon { font-size: 0.85rem; }
+
+.hero-bio {
+  font-size: 0.9rem;
+  color: var(--ink-3);
+  line-height: 1.82;
+}
+.hero-bio strong { color: var(--ink-2); font-weight: 500; }
+.hero-bio em { color: var(--ink-2); font-style: italic; }
+.hero-bio a { color: var(--blue); }
+
+/* ══════════════════════════════════════════════
+   DIVIDER
+══════════════════════════════════════════════ */
+.page-divider {
+  max-width: calc(var(--max) + 4rem);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.page-divider hr { border: none; border-top: 1px solid var(--border); }
+
+/* ══════════════════════════════════════════════
+   MAIN CONTENT
+══════════════════════════════════════════════ */
+.main {
+  max-width: calc(var(--max) + 4rem);
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+/* ── Section ── */
+.s {
+  padding: 2.75rem 0;
+  border-bottom: 1px solid var(--border-2);
+  scroll-margin-top: 70px;
+}
+.s:last-child { border-bottom: none; }
+
+.s-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.s-title {
+  font-family: var(--ff-serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.s-more {
+  font-size: 0.75rem;
+  color: var(--ink-4);
+  font-weight: 400;
+}
+.s-more:hover { color: var(--blue); text-decoration: none; }
+
+/* ══════════════════════════════════════════════
+   NEWS ITEMS
+══════════════════════════════════════════════ */
+.news-list { display: flex; flex-direction: column; gap: 0.15rem; }
+
+.news-item {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 0 1rem;
+  padding: 0.6rem 0.6rem;
+  border-radius: 8px;
+  margin: 0 -0.6rem;
+  transition: background 0.12s;
+}
+.news-item:hover { background: var(--bg-soft); }
+
+.ni-date {
+  font-family: var(--ff-mono);
+  font-size: 0.65rem;
+  color: var(--ink-4);
+  padding-top: 0.14rem;
+  letter-spacing: 0.02em;
+}
+
+.ni-body { font-size: 0.875rem; color: var(--ink-3); line-height: 1.65; }
+.ni-body strong { color: var(--ink-2); font-weight: 500; }
+.ni-body a { color: var(--blue); font-size: 0.875rem; }
+
+.ni-tag {
+  display: inline-block;
+  font-size: 0.58rem;
+  font-weight: 600;
+  font-family: var(--ff-mono);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.42rem;
+  border-radius: 3px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+  position: relative;
+  top: -1.5px;
+}
+.nt-pub   { background: var(--green-lt); color: var(--green); }
+.nt-rev   { background: var(--amber-lt); color: var(--amber); }
+.nt-role  { background: var(--blue-lt);  color: var(--blue); }
+.nt-award { background: #fdf4ff;          color: #7e22ce; }
+
+/* ══════════════════════════════════════════════
+   PUBLICATIONS
+══════════════════════════════════════════════ */
+.pub-list { display: flex; flex-direction: column; }
+
+.pub {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 0 0.85rem;
+  padding: 1.1rem 0.6rem;
+  border-radius: 8px;
+  margin: 0 -0.6rem;
+  transition: background 0.12s;
+  align-items: start;
+}
+.pub:hover { background: var(--bg-soft); }
+.pub + .pub { border-top: 1px solid var(--border-2); }
+
+.pub-n {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem;
+  color: var(--ink-5);
+  padding-top: 0.26rem;
+  text-align: right;
+}
+
+.pub-title {
+  font-family: var(--ff-serif);
+  font-size: 0.97rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 0.28rem;
+  letter-spacing: -0.008em;
+}
+
+.pub-authors {
+  font-size: 0.79rem;
+  color: var(--ink-3);
+  margin-bottom: 0.2rem;
+  line-height: 1.5;
+}
+.pub-me { font-weight: 600; color: var(--ink-2); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--ink-5); }
+
+.pub-venue {
+  font-size: 0.77rem;
+  color: var(--ink-4);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.pub-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+
+.pub-tag {
+  font-size: 0.6rem;
+  font-weight: 600;
+  font-family: var(--ff-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+}
+.pt-pub  { background: var(--green-lt); color: var(--green); }
+.pt-rev  { background: var(--amber-lt); color: var(--amber); }
+.pt-prep { background: var(--slate-lt); color: var(--slate); border: 1px solid var(--border); }
+
+.pub-doi {
+  font-family: var(--ff-mono);
+  font-size: 0.63rem;
+  color: var(--ink-4);
+  transition: color 0.12s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.pub-doi:hover { color: var(--blue); text-decoration: underline; }
+
+/* ══════════════════════════════════════════════
+   RESEARCH CARDS
+══════════════════════════════════════════════ */
+.proj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.proj {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.1rem 1.2rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.proj:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 4px 20px rgba(29,78,216,0.07);
+  transform: translateY(-2px);
+}
+.proj.wide { grid-column: 1 / -1; }
+
+.proj-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.proj-name {
+  font-family: var(--ff-serif);
+  font-size: 0.93rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+
+.proj-desc {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  line-height: 1.7;
+  margin-bottom: 0.7rem;
+}
+
+.proj-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.proj-chip {
+  font-size: 0.62rem;
+  font-family: var(--ff-mono);
+  color: var(--ink-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.proj-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border);
+}
+.proj-yr { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--ink-4); }
+.proj-link { font-size: 0.74rem; color: var(--blue); font-weight: 500; }
+.proj-link:hover { text-decoration: none; color: #1e40af; }
+
+/* ══════════════════════════════════════════════
+   ABOUT SECTION
+══════════════════════════════════════════════ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.about-box {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.1rem 1.25rem;
+}
+
+.about-box-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--ff-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 0.75rem;
+}
+
+.about-list { display: flex; flex-direction: column; gap: 0.1rem; }
+
+.about-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid var(--border-2);
+  font-size: 0.82rem;
+}
+.about-row:last-child { border-bottom: none; }
+.about-row-label { color: var(--ink-3); }
+.about-row-val { font-family: var(--ff-mono); font-size: 0.75rem; font-weight: 500; color: var(--ink); text-align: right; }
+
+.interest-wrap { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.interest-tag {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--ink-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.6rem;
+  border-radius: 100px;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.interest-tag:hover { border-color: #93c5fd; color: var(--blue); background: var(--blue-lt); }
+
+/* ══════════════════════════════════════════════
+   EXPERIENCE / TEACHING
+══════════════════════════════════════════════ */
+.exp-list { display: flex; flex-direction: column; gap: 0.15rem; }
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 66px 1fr;
+  gap: 0 1rem;
+  padding: 0.75rem 0.6rem;
+  border-radius: 8px;
+  margin: 0 -0.6rem;
+  transition: background 0.12s;
+}
+.exp-item:hover { background: var(--bg-soft); }
+.exp-item + .exp-item { border-top: 1px solid var(--border-2); }
+
+.ei-yr {
+  font-family: var(--ff-mono);
+  font-size: 0.62rem;
+  color: var(--ink-4);
+  padding-top: 0.18rem;
+  line-height: 1.45;
+}
+.ei-role { font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 0.08rem; }
+.ei-org  { font-size: 0.82rem; color: var(--ink-3); margin-bottom: 0.2rem; }
+.ei-note { font-size: 0.79rem; color: var(--ink-4); line-height: 1.65; }
+.ei-note a { font-size: 0.79rem; }
+
+/* ══════════════════════════════════════════════
+   BLOG
+══════════════════════════════════════════════ */
+.blog-list { display: flex; flex-direction: column; gap: 0.15rem; }
+
+.blog-item {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 0 1rem;
+  padding: 0.75rem 0.6rem;
+  border-radius: 8px;
+  margin: 0 -0.6rem;
+  transition: background 0.12s;
+  align-items: start;
+}
+.blog-item:hover { background: var(--bg-soft); }
+.blog-item + .blog-item { border-top: 1px solid var(--border-2); }
+
+.bi-date { font-family: var(--ff-mono); font-size: 0.62rem; color: var(--ink-4); padding-top: 0.14rem; }
+
+.bi-title {
+  font-family: var(--ff-serif);
+  font-size: 0.93rem;
+  font-weight: 400;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.18rem;
+  letter-spacing: -0.005em;
+  line-height: 1.4;
+}
+.bi-title:hover { color: var(--blue); text-decoration: none; }
+
+.bi-desc { font-size: 0.79rem; color: var(--ink-4); line-height: 1.6; }
+.bi-soon {
+  font-family: var(--ff-mono);
+  font-size: 0.58rem;
+  color: var(--ink-5);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-top: 0.22rem;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════
+   CV
+══════════════════════════════════════════════ */
+.cv-note { font-size: 0.86rem; color: var(--ink-3); margin-bottom: 1rem; line-height: 1.7; }
+.cv-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.48rem 1rem;
+  border-radius: 8px;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.cv-btn:hover {
+  border-color: var(--blue-mid);
+  color: var(--blue);
+  background: var(--blue-lt);
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(29,78,216,0.1);
+}
+
+/* ══════════════════════════════════════════════
+   REFERENCES
+══════════════════════════════════════════════ */
+.ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+.ref-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1rem 1.15rem;
+  transition: border-color 0.15s;
+}
+.ref-card:hover { border-color: #93c5fd; }
+
+.ref-name { font-size: 0.87rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
+.ref-info { font-size: 0.77rem; color: var(--ink-3); line-height: 1.7; }
+.ref-info a { font-size: 0.75rem; }
+
+/* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+.foot-inner {
+  max-width: calc(var(--max) + 4rem);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.foot-copy { font-size: 0.72rem; color: var(--ink-4); font-family: var(--ff-mono); }
+.foot-links { display: flex; gap: 1rem; }
+.foot-links a { font-size: 0.72rem; color: var(--ink-4); font-family: var(--ff-mono); transition: color 0.12s; }
+.foot-links a:hover { color: var(--blue); text-decoration: none; }
+
+/* ══════════════════════════════════════════════
+   LOAD ANIMATIONS
+══════════════════════════════════════════════ */
+.hero   { animation: fu 0.55s 0.05s ease both; }
+.main   { animation: fu 0.55s 0.15s ease both; }
+@keyframes fu { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media (max-width: 660px) {
+  .hero-inner { flex-direction: column; gap: 1.5rem; }
+  .hero-photo { width: 100%; }
+  .photo-frame { width: 120px; height: 145px; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .ref-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .news-item, .exp-item, .blog-item { grid-template-columns: 1fr; }
+  .ni-date, .ei-yr, .bi-date { margin-bottom: 0.1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAV
+══════════════════════════════════════ -->
+<nav class="nav" id="topnav">
+  <div class="nav-inner">
+    <span class="nav-name">Asiful Islam Miah</span>
+    <ul class="nav-links">
+      <li><a href="#news">News</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#cv">CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-photo">
+      <!-- Replace with: <img src="asifulIslam.jpg" alt="Asiful Islam Miah"> inside .photo-frame -->
+      <div class="photo-frame"> <img src="asifulIslam.jpg" alt="Asiful Islam Miah"></div>
+    </div>
+
+    <div class="hero-body">
+      <h1 class="hero-name">Md. Asiful Islam Miah</h1>
+
+      <div class="hero-role">
+        <strong>Lecturer</strong>, Dept. of Computer Science &amp; Engineering<br>
+        <a href="https://seu.edu.bd" target="_blank">Southeast University</a>, Dhaka, Bangladesh
+      </div>
+      <div class="hero-role" style="margin-top:0.15rem; font-size:0.83rem;">
+        B.Sc. (Eng.) · <a href="https://kuet.ac.bd" target="_blank"> Khulna University of Engineering & Technology (KUET)</a>, 2023 · CGPA 3.77 · Top 10%
+      </div>
+
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Seeking PhD position — Fall 2027 · Computer Vision &amp; Medical AI
+      </div>
+
+      <div class="hero-links">
+        <a href="mailto:asifulislam.himel@gmail.com" class="hero-link">
+          <span class="hero-link-icon">✉</span> Email
+        </a>
+        <a href="https://scholar.google.com/citations?user=K0WJWHwAAAAJ&hl=en" target="_blank" class="hero-link">
+          <span class="hero-link-icon">◈</span> Google Scholar
+        </a>
+        <a href="https://github.com/himel99" target="_blank" class="hero-link">
+          <span class="hero-link-icon">⌥</span> GitHub
+        </a>
+        <a href="https://linkedin.com/in/asifulislam-himel" target="_blank" class="hero-link">
+          <span class="hero-link-icon">▣</span> LinkedIn
+        </a>
+        <a href="#cv" class="hero-link">
+          <span class="hero-link-icon">↓</span> CV
+        </a>
+      </div>
+
+      <p class="hero-bio">
+        I research <strong>computer vision</strong> and <strong>medical AI</strong>, building efficient deep learning systems for 3D spatial understanding and clinical image analysis. My work spans chest X-ray disease localisation, brain age estimation from MRI, and differentiable 3D voxel tokenisation for spatial VQA. I am actively looking for a <strong>PhD position (Fall 2027)</strong>.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-divider"><hr></div>
+
+<!-- ══════════════════════════════════════
+     MAIN
+══════════════════════════════════════ -->
+<div class="main">
+
+  <!-- NEWS -->
+  <div class="s" id="news">
+    <div class="s-head">
+      <h2 class="s-title">News</h2>
+    </div>
+    <div class="news-list">
+
+      <div class="news-item">
+        <div class="ni-date">July 2026</div>
+        <div class="ni-body"><strong>GeoToken</strong> submitted to AAAI 2027 — GeoToken: Differentiable 3D Voxel Tokenization for Geometric Spatial Reasoning in VLMs. Preprint available on request.<span class="ni-tag nt-rev">Under review</span></div>
+      </div>
+
+      <div class="news-item">
+        <div class="ni-date">Jan 2025</div>
+        <div class="ni-body">Paper published in <strong>Springer Nature LNEE (Scopus)</strong> — Predicting Brain Age Using Lightweight 3D CNN Architecture from T1-Weighted MRI Images. Presented at ICEEE 2024, Australia.<span class="ni-tag nt-pub">Published</span></div>
+      </div>
+
+      <div class="news-item">
+        <div class="ni-date">2023</div>
+        <div class="ni-body"><strong>Chest-InfNet</strong> accepted as Scopus-indexed Taylor &amp; Francis book chapter (BIM 2023). <a href="https://doi.org/10.1201/9781032650715-6" target="_blank">doi:10.1201/9781032650715-6</a><span class="ni-tag nt-pub">Accepted</span></div>
+      </div>
+
+      <div class="news-item">
+        <div class="ni-date">Nov 2023</div>
+        <div class="ni-body">Joined <strong>Southeast University</strong> as Lecturer, Dept. of CSE. Teaching Computer Vision &amp; Algorithm Analysis; supervising 3 undergraduate research theses.<span class="ni-tag nt-role">Position</span></div>
+      </div>
+
+      <div class="news-item">
+        <div class="ni-date">March 2023</div>
+        <div class="ni-body">Joined <strong>Shanghai Baud Communication Technology Co., Ltd. (BDCOM)</strong> as R&D Engineer.  Designed and implemented Layer~2/3 networking protocols (RSTP, STP, OSPF) in C/C++, integrated into a real-time operating system (RTOS) kernel for enterprise-grade managed network switches.<span class="ni-tag nt-role">Position</span></div>
+      </div>
+
+      <div class="news-item">
+        <div class="ni-date">2018–21</div>
+        <div class="ni-body"><strong>Dean's Award</strong> three consecutive years at KUET + Technical Scholarship 2018–2021. Class Rank 13/127 (Top 10%).<span class="ni-tag nt-award">Award</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PUBLICATIONS -->
+  <div class="s" id="publications">
+    <div class="s-head">
+      <h2 class="s-title">Publications</h2>
+      <span style="font-size:0.75rem; color:var(--ink-4);">* lead / corresponding author</span>
+    </div>
+    <div class="pub-list">
+
+      <div class="pub">
+        <div class="pub-n">[1]</div>
+        <div>
+          <div class="pub-title">GeoToken: Differentiable 3D Voxel Tokenization for Geometric Spatial Reasoning in VLMs</div>
+          <div class="pub-authors"><span class="pub-me">Md. Asiful Islam Miah</span>* ·&nbsp (Southeast University), Md. Nazrul Islam ·&nbsp (Southeast University), S M Taslim Uddin Raju ·&nbsp (University of Waterloo), 
+   Hamdi Altaheri ·&nbsp (King Saud University) &nbsp;</div>
+          <div class="pub-venue">Under review — AAAI 2027 &nbsp;[Preprint on request]</div>
+          <div class="pub-meta">
+            <span class="pub-tag pt-rev">Under Review</span>
+            <span class="pub-tag pt-rev">Top-tier AI venue</span>
+            <span class="pub-tag pt-rev">Lead author</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-n">[2]</div>
+        <div>
+          <div class="pub-title">InfLocNet: Enhanced Lung Infection Localisation and Disease Detection from Chest X-Ray Images Using Lightweight Deep Learning</div>
+          <div class="pub-authors"><span class="pub-me">Md. Asiful Islam Miah</span>*, Shourin Paul, Sunanda Das, M. M. A. Hashem &nbsp;·&nbsp; KUET</div>
+          <div class="pub-venue">In preparation — <em>IEEE Transactions on Medical Imaging</em>, 2026 · Undergraduate thesis</div>
+          <div class="pub-meta">
+            <span class="pub-tag pt-prep">In Preparation</span>
+            <span class="pub-tag pt-prep">Lead author</span>
+            <span class="pub-tag pt-prep">Undergraduate thesis</span>
+             <a href="https://doi.org/10.48550/arXiv.2408.06459" target="_blank" class="pub-doi">arXiv:2408.06459 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-n">[3]</div>
+        <div>
+          <div class="pub-title">Predicting Brain Age Using Lightweight 3D CNN Architecture from T1-Weighted MRI Images</div>
+          <div class="pub-authors"><span class="pub-me">Md. Asiful Islam Miah</span>*, Shourin Paul, Md. Ahsan Habib, Kazi Saeed Alam &nbsp;·&nbsp; KUET</div>
+          <div class="pub-venue">Springer Nature Singapore, Lecture Notes in Electrical Engineering (Scopus) — ICEEE 2024</div>
+          <div class="pub-meta">
+            <span class="pub-tag pt-pub">Published</span>
+            <span class="pub-tag pt-pub">Lead author</span>
+            <a href="https://doi.org/10.1007/978-981-97-9112-5_9" target="_blank" class="pub-doi">doi:10.1007/978-981-97-9112-5_9 ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-n">[4]</div>
+        <div>
+          <div class="pub-title">Chest-InfNet: A Deep Learning Architecture for Lung Disease Detection and Infected Region Localisation from Chest X-Ray Images</div>
+          <div class="pub-authors">Shourin Paul, <span class="pub-me">Md. Asiful Islam Miah</span>, Sunanda Das, M. M. A. Hashem &nbsp;·&nbsp; KUET</div>
+          <div class="pub-venue">Taylor &amp; Francis book chapter, Scopus indexed — BIM 2023</div>
+          <div class="pub-meta">
+            <span class="pub-tag pt-pub">Published</span>
+            <a href="https://doi.org/10.1201/9781032650715-6" target="_blank" class="pub-doi">doi:10.1201/9781032650715-6 ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESEARCH -->
+  <div class="s" id="research">
+    <div class="s-head"><h2 class="s-title">Research</h2></div>
+    <div class="proj-grid">
+
+      <div class="proj">
+        <span class="proj-icon"></span>
+        <div class="proj-name">GeoToken — 3D Spatial VQA</div>
+        <div class="proj-desc">Differentiable 3D voxel tokenisation for grounded spatial reasoning. Reduces computational overhead vs. dense point-cloud methods while preserving fidelity. Submitted to AAAI 2027.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">PyTorch</span>
+          <span class="proj-chip">VLMs</span>
+          <span class="proj-chip">3D Voxels</span>
+          <span class="proj-chip">Spatial VQA</span>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-yr">2025 – present</span>
+          <a href="#publications" class="proj-link">Paper →</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <span class="proj-icon"></span>
+        <div class="proj-name">InfLocNet — Lung Disease Localisation</div>
+        <div class="proj-desc">Lightweight CNNs for multi-class lung disease classification and weakly supervised infected-region localisation from chest X-rays — no pixel-level annotation needed.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">TensorFlow</span>
+          <span class="proj-chip">Weakly Supervised</span>
+          <span class="proj-chip">Chest X-Ray</span>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-yr">2022 – present</span>
+          <a href="#publications" class="proj-link">Paper →</a>
+        </div>
+      </div>
+
+      <div class="proj wide">
+        <span class="proj-icon"></span>
+        <div class="proj-name">Brain Age Prediction from T1-Weighted MRI</div>
+        <div class="proj-desc">A lightweight 3D CNN achieving competitive brain age estimation with far fewer parameters than prior state-of-the-art — enabling deployment on resource-constrained clinical hardware. Published in Springer Nature LNEE (Scopus), ICEEE 2024.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">3D CNN</span>
+          <span class="proj-chip">NIfTI / MRI</span>
+          <span class="proj-chip">Neuroimaging</span>
+          <span class="proj-chip">SimpleITK</span>
+          <span class="proj-chip">Springer 2024</span>
+        </div>
+        <div class="proj-foot">
+          <span class="proj-yr">2022 – 2023</span>
+          <a href="https://doi.org/10.1007/978-981-97-9112-5_9" target="_blank" class="proj-link">Read paper →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="s" id="about">
+    <div class="s-head"><h2 class="s-title">About</h2></div>
+    <div class="about-grid">
+
+      <div class="about-box">
+        <div class="about-box-title">At a glance</div>
+        <div class="about-list">
+          <div class="about-row"><span class="about-row-label">Publications</span><span class="about-row-val">4</span></div>
+          <div class="about-row"><span class="about-row-label">CGPA</span><span class="about-row-val">3.77 / 4.00</span></div>
+          <div class="about-row"><span class="about-row-label">Class rank</span><span class="about-row-val">13 / 127</span></div>
+          <div class="about-row"><span class="about-row-label">Dean's Awards</span><span class="about-row-val">× 3 years</span></div>
+          <div class="about-row"><span class="about-row-label">Students taught</span><span class="about-row-val">60+ / sem.</span></div>
+          <div class="about-row"><span class="about-row-label">PhD target</span><span class="about-row-val">Fall 2027</span></div>
+        </div>
+      </div>
+
+      <div class="about-box">
+        <div class="about-box-title">Research interests</div>
+        <div class="interest-wrap">
+          <span class="interest-tag">Computer Vision</span>
+          <span class="interest-tag">Medical Image Analysis</span>
+          <span class="interest-tag">Vision-Language Models</span>
+          <span class="interest-tag">3D Deep Learning</span>
+          <span class="interest-tag">Efficient Architectures</span>
+          <span class="interest-tag">Spatial Reasoning</span>
+          <span class="interest-tag">Robotics Perception</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Experience -->
+    <div style="margin-top:1.25rem;">
+      <div class="exp-list">
+        <div class="s-head"><h2 class="s-title">Teaching & Experience</h2></div>
+        <div class="exp-item">
+          <div class="ei-yr">Nov 2023 –<br>present</div>
+          <div>
+            <div class="ei-role">Lecturer, Dept. of CSE</div>
+            <div class="ei-org">Southeast University, Dhaka, Bangladesh</div>
+            <div class="ei-note">Teaching Computer Vision and Algorithm Analysis (60+ students/semester). Supervising 3 undergraduate research theses. Founded weekly AI reading group on VLMs and efficient inference (2024–present).</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="ei-yr">Mar –<br>Oct 2023</div>
+          <div>
+            <div class="ei-role">R&amp;D Engineer</div>
+            <div class="ei-org">Shanghai Baud Communication Technology Co. (BDCOM), Dhaka</div>
+            <div class="ei-note">Implemented Layer 2/3 networking protocols (RSTP, OSPF) in C/C++ for enterprise switch firmware on an RTOS kernel. Production validation and regression testing.</div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="ei-yr">2018 –<br>2023</div>
+          <div>
+            <div class="ei-role">B.Sc. (Eng.) Computer Science and Engineering</div>
+            <div class="ei-org">Khulna University of Engineering &amp; Technology (KUET), Khulna</div>
+            <div class="ei-note">
+              CGPA 3.77 / 4.00 · Class Rank 13/127 (Top 10%) · Dean's Award 2019–2021 · Technical Scholarship 2018–2021 · President, HACK Club.<br>
+              <em>Thesis:</em> "InfLocNet: Enhanced Lung Infection Localisation…" — Supervisor: <a href="https://www.kuet.ac.bd/cse/hashem/" target="_blank">Prof. Dr. M. M. A. Hashem</a>.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>  
+
+  <!-- CV -->
+  <div class="s" id="cv">
+    <div class="s-head"><h2 class="s-title">Curriculum Vitae</h2></div>
+    <p class="cv-note">Full academic CV with publications, research projects, education, awards, and references.</p>
+    <div class="cv-row">
+      <a href="Asiful_Islam_Miah_PhD_CV.pdf" class="cv-btn">↓ &nbsp;PDF</a>
+      <a href="#" class="cv-btn">↓ &nbsp;Word (.docx)</a>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="s" id="references">
+    <div class="s-head"><h2 class="s-title">References</h2></div>
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Dr. M. M. A. Hashem</div>
+        <div class="ref-info">
+          Professor &amp; Thesis Supervisor<br>
+          Dept. of CSE, KUET, Khulna 9203, Bangladesh<br>
+          <a href="mailto:hashem@cse.kuet.ac.bd">hashem@cse.kuet.ac.bd</a><br>
+          <a href="https://www.kuet.ac.bd/cse/hashem/" target="_blank">www.kuet.ac.bd/cse/hashem/</a>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Dr. Sk. Md. Masudul Ahsan</div>
+        <div class="ref-info">
+          Professor<br>
+          Dept. of CSE, KUET, Khulna 9203, Bangladesh<br>
+          <a href="mailto:smahsan@cse.kuet.ac.bd">smahsan@cse.kuet.ac.bd</a><br>
+          <a href="https://www.kuet.ac.bd/cse/smmasudul/" target="_blank">www.kuet.ac.bd/cse/smmasudul/</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<footer>
+  <div class="foot-inner">
+    <span class="foot-copy">© 2026 · Md. Asiful Islam Miah</span>
+    <div class="foot-links">
+      <a href="https://scholar.google.com/citations?user=K0WJWHwAAAAJ&hl=en" target="_blank">Scholar</a>
+      <a href="https://github.com/himel99" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/asifulislam-himel" target="_blank">LinkedIn</a>
+      <a href="mailto:asifulislam.himel@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav border on scroll
+const nav = document.getElementById('topnav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 10);
+}, { passive: true });
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('.s');
+const navAs    = document.querySelectorAll('.nav-links a');
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navAs.forEach(a => a.classList.remove('on'));
+      const a = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if (a) a.classList.add('on');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => spy.observe(s));
+</script>
+</body>
+</html>
